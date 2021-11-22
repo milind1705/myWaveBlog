@@ -66,6 +66,7 @@ module.exports.signup = (req, res) =>{
         //assign token
            
         jwt.sign({_id:user.id}, process.env.JWT_KEY, {expiresIn:3600}, (err,token) =>{
+            res.cookie("access_token", token)
             return res.status(200).json({
                 token:token,
                 user:{email: user.email, name: user.name},

@@ -7,7 +7,6 @@ module.exports.createBlog = async(req, res) =>{
     const userid =  req.payload._id
     const user =await User.findById(userid)
     const userId = user.id
-    console.log(user)
     const newBlog = new Blog({title, description, markDown, userId});
     newBlog.save().then((data) => {
         return res.status(200).json({
