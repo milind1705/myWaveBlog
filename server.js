@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require ("express");
 const mongoose =  require('mongoose');
 const cookieParser = require('cookie-parser');
-const port =  5000
+const port =  5000 || process.env.PORT
 const app = express();
 
 const userRouter =  require('./routes/user.routes')
@@ -29,6 +29,9 @@ app.use('/login', (req, res) => {
 
 app.use('/createBlog', (req, res) => {
     res.render('createBlog')
+})
+app.use('/', (req, res) => {
+    res.render('home')
 })
 
 
